@@ -15,6 +15,7 @@ import Home from "./components/Home.jsx";
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import User from "./components/User/User.jsx";
+import GitHub, { githubInfoLoader } from "./components/User/GitHub.jsx";             
 
 //Two Diffrent method to provide routes
 
@@ -42,17 +43,23 @@ import User from "./components/User/User.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path=" " element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path="/user/:userid" element={<User />} />
+      <Route 
+        path="github"
+        element={<GitHub/>}
+        loader={githubInfoLoader}
+      />
     </Route>
   )
 );
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router} />
-  </StrictMode>
+  // <StrictMode>
+    
+  // </StrictMode>
+  // {/* <App /> */}
+  <RouterProvider router={router} />
 );
